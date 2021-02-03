@@ -42,3 +42,8 @@ class ListCreate(LoginRequiredMixin, CreateView):
 
 def about(request):
     return render(request, 'about.html')
+
+@login_required
+def lists_index(request):
+    lists = TodoList.objects.filter(user=request.user)
+    return render(request, 'lists/index.html', { 'lists': lists })
