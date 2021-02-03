@@ -45,5 +45,5 @@ def about(request):
 
 @login_required
 def lists_index(request):
-    lists = TodoList.objects.filter(user=request.user)
-    return render(request, 'lists/index.html', { 'lists': lists })
+    todolists = TodoList.objects.filter(user=request.user)
+    return render(request, 'lists/index.html', { 'todolists': todolists })
