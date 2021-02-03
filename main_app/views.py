@@ -51,5 +51,5 @@ def todolists_index(request):
 @login_required
 def todolists_detail(request, todolist_id):
     todolist = TodoList.objects.get(id=todolist_id)
-    return render(request, 'todolists/detail.html', {'todolist': todolist})
+    return render(request, 'todolist/detail.html', {'todolist': todolist})
 

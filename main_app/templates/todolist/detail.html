@@ -9,7 +9,7 @@
         <p>Description: {{ todolist.description }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'listss_update' todolist.id %}">Edit</a>
+        <a href="{% url 'lists_update' todolist.id %}">Edit</a>
         <a href="{% url 'lists_delete' todolist.id %}">Delete</a>
       </div>
     </div>
