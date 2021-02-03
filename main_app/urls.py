@@ -8,4 +8,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('lists/', views.todolists_index, name='index'),
     path('lists/<int:todolist_id>/', views.todolists_detail, name='detail'),
+    path('lists/<int:pk>/update/', views.TodoListUpdate.as_view(), name='todolists_update'),
+    path('lists/<int:pk>/delete/', views.TodoListDelete.as_view(), name='todolists_delete'),
 ]

@@ -53,3 +53,11 @@ def todolists_detail(request, todolist_id):
     todolist = TodoList.objects.get(id=todolist_id)
     return render(request, 'todolist/detail.html', {'todolist': todolist})
 
+class TodoListUpdate(LoginRequiredMixin, UpdateView):
+    model = TodoList
+    fields = ['description', 'is_completed']
+
+class TodoListDelete(LoginRequiredMixin, DeleteView):
+    model = TodoList
+    success_url = '/lists/'
+
