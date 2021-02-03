@@ -6,5 +6,6 @@ urlpatterns = [
     path('acounts/signup/', views.signup, name='signup'),
     path('lists/create/', views.ListCreate.as_view(), name='lists_create'),
     path('about/', views.about, name='about'),
+    path('lists/', views.todolists_index, name='index'),
     path('lists/<int:todolist_id>/', views.todolists_detail, name='detail'),
 ]
