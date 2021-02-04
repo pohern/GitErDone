@@ -15,3 +15,15 @@ class TodoList(models.Model):
 
     def __str__(self):
         return self.name
+
+class List(models.Model):
+    todolist = models.ForeignKey(TodoList,on_delete=models.CASCADE,related_name='comments')
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    done =  models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return self.body
