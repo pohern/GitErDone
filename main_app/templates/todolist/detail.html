@@ -18,6 +18,19 @@
         <a href="{% url 'todolists_delete' todolist.id %}">Delete</a>
       </div>
     </div>
+    <div class="card-body">
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ list_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+      </div>
+    {% for list in lists %}
+        <div>
+            <p>{{list.body}}</p>
+        </div>
+    {% endfor %}
   </div>
 </div>
 

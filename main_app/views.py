@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ListForm
 
 # Create your views here.
 
@@ -51,7 +52,17 @@ def todolists_index(request):
 @login_required
 def todolists_detail(request, todolist_id):
     todolist = TodoList.objects.get(id=todolist_id)
-    return render(request, 'todolist/detail.html', {'todolist': todolist})
+    # lists = todolist.lists.all()
+    new_list = None
+    if request.method == 'POST':
+        list_form = ListForm(data=request.POST)
+        if list_form.is_valid():
+            new_list = list_form.save()
+            new_list.todolist = todolist
+            new_list.save()
+        else:
+            list_form = ListForm()
+    return render(request, 'todolist/detail.html', {'todolist': todolist, 'new_list': new_list, 'list_form': list_form})
 
 class TodoListUpdate(LoginRequiredMixin, UpdateView):
     model = TodoList
