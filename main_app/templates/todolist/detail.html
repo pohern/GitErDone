@@ -7,7 +7,11 @@
       <div class="card-content">
         <span class="card-title">{{ todolist.name }}</span>
         <p>Description: {{ todolist.description }}</p>
-        <p>Done?: {{todolist.id_is_completed}}</p>
+        {% if todolist.is_completed is False %}
+          <p>Cmon let's get er done</p>
+        {% else %}
+          <p>Great job buddy, time for a beer</p>
+        {% endif %}
       </div>
       <div class="card-action">
         <a href="{% url 'todolists_update' todolist.id %}">Edit</a>
@@ -17,23 +21,4 @@
   </div>
 </div>
 
-<!-- JS to create a date picker and init the meal dropdown -->
-<script>
-  // create a datepicker
-  var dateEl = document.getElementById('id_date');
-  M.Datepicker.init(dateEl, {
-    format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true
-  });
-  // initialize the meal select
-  var selectEl = document.getElementById('id_is_completed');
-  M.FormSelect.init(selectEl);
-
-    (document).ready(function() {
-        (':checkbox').wrap('<label class="crutch"> </label>')
-        ('.crutch').append('<span> </span>')
-    });
-</script>
 {% endblock %}
