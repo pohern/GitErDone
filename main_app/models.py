@@ -17,8 +17,8 @@ class TodoList(models.Model):
         return self.name
 
 class List(models.Model):
-    todolist = models.ForeignKey(TodoList,on_delete=models.CASCADE,related_name='comments')
-    body = models.TextField()
+    todolist = models.ForeignKey(TodoList,on_delete=models.CASCADE)
+    lisst = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     done =  models.BooleanField(default=False)
 

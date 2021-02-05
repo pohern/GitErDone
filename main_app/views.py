@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import TodoList
+from .models import TodoList, List
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -52,17 +52,8 @@ def todolists_index(request):
 @login_required
 def todolists_detail(request, todolist_id):
     todolist = TodoList.objects.get(id=todolist_id)
-    # lists = todolist.lists.all()
-    new_list = None
-    if request.method == 'POST':
-        list_form = ListForm(data=request.POST)
-        if list_form.is_valid():
-            new_list = list_form.save()
-            new_list.todolist = todolist
-            new_list.save()
-        else:
-            list_form = ListForm()
-    return render(request, 'todolist/detail.html', {'todolist': todolist, 'new_list': new_list, 'list_form': list_form})
+    lisst = List.objects.filter(todolist=todolist_id)
+    return render(request, 'todolist/detail.html', {'todolist': todolist, 'list': lisst})
 
 class TodoListUpdate(LoginRequiredMixin, UpdateView):
     model = TodoList
@@ -71,4 +62,14 @@ class TodoListUpdate(LoginRequiredMixin, UpdateView):
 class TodoListDelete(LoginRequiredMixin, DeleteView):
     model = TodoList
     success_url = '/lists/'
+
+@login_required
+def add_item(request, todolist_id):
+    form = ListForm(request.POST)
+    if form.is_valid():
+        new_list = form.save(commit=False)
+        new_list.todolist_id = todolist_id
+        new_list.save()
+    return redirect('detail', todolist_id=todolist_id)
+
 

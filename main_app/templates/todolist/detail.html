@@ -18,19 +18,22 @@
         <a href="{% url 'todolists_delete' todolist.id %}">Delete</a>
       </div>
     </div>
-    <div class="card-body">
-        <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
-          {{ list_form.as_p }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
-      </div>
-    {% for list in lists %}
-        <div>
-            <p>{{list.body}}</p>
+    <div class="col s6">
+            <form action="{% url 'add_item' todolist.id %}" method="post">
+                {% csrf_token %}
+                {{ list_form.as_p }}
+                <input type="submit" class="btn btn-light" value="Add Item">
+            </form>
         </div>
-    {% endfor %}
+    {% if lisst.count %}
+        {% for lisst in lisst.all %}
+        <div class="">
+            <p>{{ lisst.lissts}}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>{{ todolist.name }} has no items yet.</p>
+    {% endif %}
   </div>
 </div>
 
