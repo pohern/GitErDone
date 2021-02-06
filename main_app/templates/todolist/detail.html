@@ -17,24 +17,24 @@
         <a href="{% url 'todolists_update' todolist.id %}">Edit</a>
         <a href="{% url 'todolists_delete' todolist.id %}">Delete</a>
       </div>
-    </div>
-    <div class="col s6">
-            <form action="{% url 'add_item' todolist.id %}" method="post">
+</div>
+            <!-- new code below -->
+            <form action="{% url 'add_rating' todolist.id %}" method="post">
                 {% csrf_token %}
-                {{ list_form.as_p }}
-                <input type="submit" class="btn btn-light" value="Add Item">
+                {{ rating_form.as_p }}
+                <input type="submit" class="btn btn-light" value="Add Comment">
             </form>
         </div>
-    {% if lisst.count %}
-        {% for lisst in lisst.all %}
-        <div class="">
-            <p>{{ lisst.lissts}}</p>
+    {% if comment.count %}
+        {% for comment in comment.all %}
+        <div class="comments">
+            <p>{{ comment.comments}}</p>
+            
         </div>
         {% endfor %}
     {% else %}
-        <p>{{ todolist.name }} has no items yet.</p>
+        <p>{{ todolist.name}} has no comments yet.</p>
     {% endif %}
-  </div>
-</div>
+
 
 {% endblock %}

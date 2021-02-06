@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import List
+from .models import Rating
 
-class ListForm(ModelForm):
+class RatingForm(ModelForm):
     class Meta:
-        model = List
-        fields = ['lisst']
+        model = Rating
+        fields = ['comments']

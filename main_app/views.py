@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import TodoList, List
+from .models import TodoList, Rating
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ListForm
+from .forms import RatingForm
 
 # Create your views here.
 
@@ -39,7 +39,6 @@ class ListCreate(LoginRequiredMixin, CreateView):
   def form_valid(self, form):
       form.instance.user = self.request.user
       return super().form_valid(form)
-    # success_url = '/cats/' on method, best is in model though
 
 def about(request):
     return render(request, 'about.html')
@@ -51,9 +50,10 @@ def todolists_index(request):
 
 @login_required
 def todolists_detail(request, todolist_id):
-    todolist = TodoList.objects.get(id=todolist_id)
-    lisst = List.objects.filter(todolist=todolist_id)
-    return render(request, 'todolist/detail.html', {'todolist': todolist, 'list': lisst})
+    todolist = TodoList.objects.get()
+    rating_form = RatingForm()
+    comment = Rating.objects.filter(todolist=todolist_id)
+    return render(request, 'todolist/detail.html', {'todolist': todolist, 'comment': comment})
 
 class TodoListUpdate(LoginRequiredMixin, UpdateView):
     model = TodoList
@@ -64,12 +64,15 @@ class TodoListDelete(LoginRequiredMixin, DeleteView):
     success_url = '/lists/'
 
 @login_required
-def add_item(request, todolist_id):
-    form = ListForm(request.POST)
-    if form.is_valid():
-        new_list = form.save(commit=False)
-        new_list.todolist_id = todolist_id
-        new_list.save()
-    return redirect('detail', todolist_id=todolist_id)
+def add_rating(request, todolist_id):
+  form = RatingForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_rating = form.save(commit=False)
+    new_rating.todolist_id = todolist_id
+    new_rating.save()
+  return redirect('detail', todolist_id=todolist_id)
 
 

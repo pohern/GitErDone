@@ -16,14 +16,12 @@ class TodoList(models.Model):
     def __str__(self):
         return self.name
 
-class List(models.Model):
-    todolist = models.ForeignKey(TodoList,on_delete=models.CASCADE)
-    lisst = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    done =  models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ['created_on']
+class Rating(models.Model):
+    comments = models.CharField(max_length=250)
+    todolist = models.ForeignKey(TodoList, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.body
+        return self.comments
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'todolist_id' : self.id})
