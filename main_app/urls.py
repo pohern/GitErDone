@@ -11,4 +11,5 @@ urlpatterns = [
     path('lists/<int:pk>/update/', views.TodoListUpdate.as_view(), name='todolists_update'),
     path('lists/<int:pk>/delete/', views.TodoListDelete.as_view(), name='todolists_delete'),
     path('lists/<int:todolist_id>/add_rating', views.add_rating, name='add_rating'),
+    path('ratings/<int:pk>/delete', views.RatingDelete.as_view(), name='ratings_delete'),
 ]

@@ -18,10 +18,11 @@
         <a href="{% url 'todolists_delete' todolist.id %}">Delete</a>
       </div>
 </div>
+<div>
             <!-- new code below -->
             <form action="{% url 'add_rating' todolist.id %}" method="post">
                 {% csrf_token %}
-                {{ rating_form.as_p }}
+                {{ rating_form.as_table }}
                 <input type="submit" class="btn btn-light" value="Add Comment">
             </form>
         </div>
@@ -35,6 +36,6 @@
     {% else %}
         <p>{{ todolist.name}} has no comments yet.</p>
     {% endif %}
-
+</div>
 
 {% endblock %}
