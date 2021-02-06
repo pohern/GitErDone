@@ -2,7 +2,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: yellow;
 }
 
 main {
@@ -14,3 +13,10 @@ footer.page-footer {
   text-align: right;
 }
 
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: teal;
+    background-color: black;
+}
