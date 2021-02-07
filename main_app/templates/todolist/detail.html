@@ -19,7 +19,6 @@
       </div>
 </div>
 <div>
-            <!-- new code below -->
             <form action="{% url 'add_rating' todolist.id %}" method="post">
                 {% csrf_token %}
                 {{ rating_form.as_table }}
@@ -33,7 +32,7 @@
         </div>
         {% endfor %}
     {% else %}
-        <p>{{ todolist.name}} has no comments yet.</p>
+        <p>{{ todolist.name }} has no comments yet.</p>
     {% endif %}
 </div>
 
