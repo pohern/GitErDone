@@ -1,40 +1,49 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1 class='two'>List Details</h1>
+{% extends 'base.html' %} {% block content %}
+<h1 class="two">List Details</h1>
 <div class="detail-container">
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content three">
-        <span class="card-title">{{ todolist.name }}</span>
-        <p>Description: {{ todolist.description }}</p>
-        {% if todolist.is_completed is False %}
-          <p>Cmon let's get er done</p>
-        {% else %}
-          <p>Great job buddy, time for a beer</p>
+  <div class="row">
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content three">
+          <span class="card-title">{{ todolist.name }}</span>
+          <p>Description: {{ todolist.description }}</p>
+          {% if todolist.is_completed is False %}
+          <p>Cmon let's get this {{todolist.name}} done</p>
+          {% else %}
+          <p>Great job, time for a beer</p>
+          {% endif %}
+        </div>
+        <div class="card-action three">
+          <a
+            class="btn btn-light"
+            href="{% url 'todolists_update' todolist.id %}"
+            >Edit</a
+          >
+          <a
+            class="btn btn-light"
+            href="{% url 'todolists_delete' todolist.id %}"
+            >Delete</a
+          >
+        </div>
+      </div>
+      <div>
+        <div class="four">
+          <form action="{% url 'add_rating' todolist.id %}" method="post">
+            {% csrf_token %} {{ rating_form.as_table }}
+            <input type="submit" class="btn btn-light" value="Add Item" />
+          </form>
+        </div>
+        {% if comment.count %} {% for comment in comment.all %}
+        <div class="comments">
+          
+          <input type="checkbox" id="demo" />
+          <label for="demo"><li>{{ comment.comments}}</li></label>
+        </div>
+        {% endfor %} {% else %}
+        <p>{{ todolist.name }} has no items yet.</p>
         {% endif %}
       </div>
-      <div class="card-action three">
-        <a class='btn btn-light' href="{% url 'todolists_update' todolist.id %}">Edit</a>
-        <a class='btn btn-light' href="{% url 'todolists_delete' todolist.id %}">Delete</a>
-      </div>
+    </div>
+  </div>
+  {% endblock %}
 </div>
-<div>
-            <form action="{% url 'add_rating' todolist.id %}" method="post">
-                {% csrf_token %}
-                {{ rating_form.as_table }}
-                <input type="submit" class="btn btn-light" value="Add Item">
-            </form>
-        </div>
-    {% if comment.count %}
-        {% for comment in comment.all %}
-        <div class="comments">
-            <p>{{ comment.comments}}</p>
-        </div>
-        {% endfor %}
-    {% else %}
-        <p>{{ todolist.name }} has no items yet.</p>
-    {% endif %}
-</div>
-</div>
-{% endblock %}

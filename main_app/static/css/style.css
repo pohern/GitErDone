@@ -54,9 +54,26 @@ a {
     align-items: center;
     color: black;  
     background-color: cornflowerblue;
+    border: none;
 }
 
 .three {
     background-color: crimson;
     font-size: 1.2rem;
+}
+
+.four {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.comments {
+    color: black;
+    text-align: center;
+}
+
+#demo:checked + label {
+    text-decoration: line-through;
+    color: white;
 }
