@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="two">Todo Lists</h1>
+<h1 class="two"> {{user.username}}'s Todo Lists</h1>
 {% if todolists.count %} {% for todolist in todolists %}
 <div class="card-container">
   <div class="card">
