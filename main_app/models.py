@@ -17,11 +17,11 @@ class TodoList(models.Model):
         return self.name
 
 class Rating(models.Model):
-    comments = models.CharField(max_length=250)
+    items = models.CharField(max_length=250)
     todolist = models.ForeignKey(TodoList, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.comments
+        return self.items
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'todolist_id' : self.id})

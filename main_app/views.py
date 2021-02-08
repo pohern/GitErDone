@@ -51,9 +51,9 @@ def todolists_index(request):
 @login_required
 def todolists_detail(request, todolist_id):
     todolist = TodoList.objects.get()
-    comment = Rating.objects.filter(todolist=todolist_id)
+    item = Rating.objects.filter(todolist=todolist_id)
     rating_form = RatingForm()
-    return render(request, 'todolist/detail.html', {'todolist': todolist, 'comment': comment, 'rating_form': rating_form})
+    return render(request, 'todolist/detail.html', {'todolist': todolist, 'item': item, 'rating_form': rating_form})
 
 class TodoListUpdate(LoginRequiredMixin, UpdateView):
     model = TodoList

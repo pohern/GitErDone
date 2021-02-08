@@ -33,11 +33,10 @@
             <input type="submit" class="btn btn-light" value="Add Item" />
           </form>
         </div>
-        {% if comment.count %} {% for comment in comment.all %}
+        {% if item.count %} {% for item in item.all %}
         <div class="comments">
-          
           <input type="checkbox" id="demo" />
-          <label for="demo"><li>{{ comment.comments}}</li></label>
+          <label for="demo">{{ item.items}}</label>
         </div>
         {% endfor %} {% else %}
         <p>{{ todolist.name }} has no items yet.</p>
