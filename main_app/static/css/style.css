@@ -19,7 +19,45 @@ footer.page-footer {
     justify-content: center;
     align-items: center;
     color: black;
-    
+    height: 100vh;
+}
+
+.about-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: 100vh;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.six {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+}
+
+.titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+}
+.hometitle {
+    font-size: 6rem;
+    color: whitesmoke;
 }
 
 footer {
@@ -57,6 +95,7 @@ a {
     color: black;  
     background-color: cornflowerblue;
     border: none;
+    text-align: center;
 }
 
 .three {
@@ -89,4 +128,12 @@ a {
 .five {
     font-size: 1.3rem;
     text-align: center;
+}
+
+.margin {
+    margin: 20px;
+}
+
+.title {
+    margin: 20px;
 }

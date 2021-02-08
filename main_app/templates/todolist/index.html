@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+<div class="title">
 <h1 class="two"> {{user.username}}'s Todo Lists</h1>
 {% if todolists.count %} {% for todolist in todolists %}
 <div class="card-container">
@@ -14,4 +14,5 @@
 </div>
 {% endfor %} {% else %}
 <p class='five'>Let's add your first todo list!</p>
+</div>
 {% endif %} {% endblock %}
