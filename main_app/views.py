@@ -50,7 +50,7 @@ def todolists_index(request):
 
 @login_required
 def todolists_detail(request, todolist_id):
-    todolist = TodoList.objects.get()
+    todolist = TodoList.objects.get(id=todolist_id)
     item = Rating.objects.filter(todolist=todolist_id)
     rating_form = RatingForm()
     return render(request, 'todolist/detail.html', {'todolist': todolist, 'item': item, 'rating_form': rating_form})
