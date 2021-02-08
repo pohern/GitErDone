@@ -61,7 +61,6 @@ a {
 
 .three {
     display: inline;
-    background-color:;
     font-size: 1.2rem;
     align-items: center;
 }
@@ -85,4 +84,9 @@ a {
 .card {
     background-color: cornflowerblue;
     border: none;
+}
+
+.five {
+    font-size: 1.3rem;
+    text-align: center;
 }

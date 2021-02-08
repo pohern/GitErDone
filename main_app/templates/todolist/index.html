@@ -1,16 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class='two'>Todo Lists</h1>
-
-{% for todolist in todolists %}
-<div  class='card-container'>
-    <div class="card">
+<h1 class="two">Todo Lists</h1>
+{% if todolists.count %} {% for todolist in todolists %}
+<div class="card-container">
+  <div class="card">
     <a href="{% url 'detail' todolist.id %}">
-        <div class="card-content">
+      <div class="card-content">
         <span class="card-title one">{{ todolist.name }}</span>
-        <p class='one'>Description: {{ todolist.description }}</p>
-        </div>
+        <p class="one">Description: {{ todolist.description }}</p>
+      </div>
     </a>
-    </div>
+  </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} {% else %}
+<p class='five'>Let's add your first todo list!</p>
+{% endif %} {% endblock %}
