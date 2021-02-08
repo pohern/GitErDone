@@ -137,3 +137,7 @@ a {
 .title {
     margin: 20px;
 }
+
+.font {
+    font-family: 'Gloria Hallelujah', cursive;
+}
