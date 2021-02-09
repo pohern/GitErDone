@@ -1,7 +1,7 @@
 # GitErDone
 ## An easy place to keep all of your todolists in one place!
 [You can check out the app here!](https://giterrdone.herokuapp.com/)
-
+<br></br>
 [Here is the original trello board for this project](https://trello.com/b/YjbXK1CC/to-do-list)
 
 # Screenshots from the app
