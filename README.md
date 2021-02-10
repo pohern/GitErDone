@@ -12,7 +12,6 @@
 ![screenshot](Screen%20Shot%202021-02-09%20at%203.04.17%20PM.png)
 ### Technologies Used 
 * CSS
-* JavaScript 
 * HTML
 * Python
 * Django
