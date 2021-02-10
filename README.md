@@ -20,3 +20,6 @@
 * Whimsical (for wire frames)
 * Google Fonts
 
+## IceBox Features
+* Add an option to have a todolist repeat on a set schedule.
+* Add a feature to text/email the list to yourself.
